@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Tugas UAS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="../css/styles2.css" rel="stylesheet" type="text/css" />
+    <style>
+      html, body {
+        overflow-x: hidden;
+      }
+    </style>
+</head>
+<body style="height: 100%; min-height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(8, 57, 102);">
+    <div class="container px-4">
+      <a class="navbar-brand" href="/">
+        <span style="color:#ffffff; font-size:26px; font-weight:bold; letter-spacing: 1px;">Welcome To Our Store</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Log Out</a></li>
+          <li class="nav-item"><a class="nav-link" href="Home.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+        <div class="row">
+              <div id="carouselId" class="carousel slide" data-bs-ride="carousel" >
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+                  <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+                  <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <img src="../gambar/ayamgoreng.jpg" class="w-100 d-block" alt="First slide" height="400px">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../gambar/bebekgoreng.jpg" class="w-100 d-block" alt="Second slide" height="400px">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="../gambar/bakso.jpg" class="w-100 d-block" alt="Third slide" height="400px">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                  </button>
+          </div>
+        </div>
+        <div>
+          <div class="row justify-content-center" style="text-align: center; margin: 50px;">
+             <p><img src="" align="right"></img>
+                <center>
+                    <p>kami memberikan diskon terbaik</p>
+                    <p>1. diskon untuk member sebesar 5%</p>
+                    <p>2. diskon untuk weekend sebesar 2%</p>
+                    <p>3. dan harga murahh untuk hari biasa</p>
+            
+                    <table border="1" id="table_atas">
+                        <tr>
+                            <th>No .</th>
+                            <th>Nama Makanan</th>
+                            <th>Harga Makanan</th>
+                            <th>Porsi</th>
+                            <th>total harga makanan</th>
+                            <th>Hapus Pesanan</th>
+                            <th></th>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Total :</th>
+                            <th id="total">-</th>
+            
+                        </tr>
+                    </table>
+                    <input type="radio" name="pelanggan" id="pelanggan_ya" value="ya">
+                    <label>Member</label>
+                    <input type="radio" name="pelanggan" id="pelanggan_tidak" value="tidak" checked>
+                    <label>Bukan Member</label>
+                    <br>
+                    <select id="nama_makanan">
+                        <option value="1">Ayam Goreng</option>
+                        <option value="2">Bebek Goreng</option>
+                        <option value="3">bakso Biasa</option>
+                        <option value="4">bakso Istimewa</option>
+                        <option value="5">bakso Beranak</option>
+            
+                    </select>
+                    <input type="number" id="porsi" min="1" value="1" style="width: 50px;border-style: solid;" required>
+                    <button type="button" id="btn-tambah" onclick="tambah()">Tambah Pesanan</button>
+                    
+                    <p id="selamat_diskon" style="display: none;">Selamat anda adalah member, mendapat diskon 5%</p>
+                    <p id="selamat_weekend" style="display: none;">Selamat mendapat potongan harga 10% saat weekend. rumah makan
+                        kami memberikan potongan harga terbanyak</p>
+                    <script>
+                        var baris = 1;
+                        var total = 0;
+                        var dt = new Date();
+            
+                        function tambah() {
+                            var nama_makan = document.getElementById('nama_makanan').value;
+                            var jml_porsi = document.getElementById('porsi').value;
+                            var is_pelanggan = document.getElementById('pelanggan_ya').checked;
+                            if (nama_makan == 1) {
+            
+                                var tbl = document.getElementById('table_atas');
+                                var row = tbl.insertRow(baris);
+                                var no = row.insertCell(0);
+                                var nama = row.insertCell(1);
+                                var harga = row.insertCell(2);
+                                var porsi = row.insertCell(3);
+                                var total_harga = row.insertCell(4);
+                                var hapus = row.insertCell(5);
+                                if (dt.getDay() < 5) {
+                                    var hrg = 10000;
+                                } else {
+                                    var hrg = 9800;
+                                    document.getElementById('selamat_weekend').style.display = 'block';
+                                }
+                                if (is_pelanggan) {
+                                    hrg -= hrg * 5 / 100;
+                                    document.getElementById('selamat_diskon').style.display = 'block';
+                                }
+            
+                                no.innerHTML = baris;
+                                nama.innerHTML = 'Ayam Goreng';
+                                harga.innerHTML = 'Rp. ' + hrg;
+                                porsi.innerHTML = jml_porsi;
+                                total_harga.innerHTML = 'Rp. ' + (jml_porsi * hrg);
+                                hapus.innerHTML = '<button type="button" onclick="hapusBaris(this)">Hapus</button>';
+                                total += jml_porsi * hrg;
+            
+            
+                            } else if (nama_makan == 2) {
+                                var tbl = document.getElementById('table_atas');
+                                var row = tbl.insertRow(baris);
+                                var no = row.insertCell(0);
+                                var nama = row.insertCell(1);
+                                var harga = row.insertCell(2);
+                                var porsi = row.insertCell(3);
+                                var total_harga = row.insertCell(4);
+                                var hapus = row.insertCell(5);
+                                if (dt.getDay() < 5) {
+                                    var hrg = 20000;
+                                } else {
+                                    var hrg = 19600;
+                                    document.getElementById('selamat_weekend').style.display = 'block';
+                                }
+                                if (is_pelanggan) {
+                                    hrg -= hrg * 5 / 100;
+                                    document.getElementById('selamat_diskon').style.display = 'block';
+                                }
+                                no.innerHTML = baris;
+                                nama.innerHTML = 'Bebek Goreng';
+                                harga.innerHTML = 'Rp. ' + hrg;
+                                porsi.innerHTML = jml_porsi;
+                                total_harga.innerHTML = 'Rp. ' + (jml_porsi * hrg);
+                                hapus.innerHTML = '<button type="button" onclick="hapusBaris(this)">Hapus</button>';
+                                total += jml_porsi * hrg;
+                            } else if (nama_makan == 3) {
+                                var tbl = document.getElementById('table_atas');
+                                var row = tbl.insertRow(baris);
+                                var no = row.insertCell(0);
+                                var nama = row.insertCell(1);
+                                var harga = row.insertCell(2);
+                                var porsi = row.insertCell(3);
+                                var total_harga = row.insertCell(4);
+                                var hapus = row.insertCell(5);
+                                if (dt.getDay() < 5) {
+                                    var hrg = 10000;
+                                } else {
+                                    var hrg = 9800;
+                                    document.getElementById('selamat_weekend').style.display = 'block';
+                                }
+                                if (is_pelanggan) {
+                                    hrg -= hrg * 5 / 100;
+                                    document.getElementById('selamat_diskon').style.display = 'block';
+                                }
+                                no.innerHTML = baris;
+                                nama.innerHTML = 'Bakso Biasa';
+                                harga.innerHTML = 'Rp. ' + hrg;
+                                porsi.innerHTML = jml_porsi;
+                                total_harga.innerHTML = 'Rp. ' + (jml_porsi * hrg);
+                                hapus.innerHTML = '<button type="button" onclick="hapusBaris(this)">Hapus</button>';
+                                total += jml_porsi * hrg;
+                            } else if (nama_makan == 4) {
+                                var tbl = document.getElementById('table_atas');
+                                var row = tbl.insertRow(baris);
+                                var no = row.insertCell(0);
+                                var nama = row.insertCell(1);
+                                var harga = row.insertCell(2);
+                                var porsi = row.insertCell(3);
+                                var total_harga = row.insertCell(4);
+                                var hapus = row.insertCell(5);
+                                if (dt.getDay() < 5) {
+                                    var hrg = 10000;
+                                } else {
+                                    var hrg = 9800;
+                                    document.getElementById('selamat_weekend').style.display = 'block';
+                                }
+                                if (is_pelanggan) {
+                                    hrg -= hrg * 5 / 100;
+                                    document.getElementById('selamat_diskon').style.display = 'block';
+                                }
+                                no.innerHTML = baris;
+                                nama.innerHTML = 'Bakso Istimewa';
+                                harga.innerHTML = 'Rp. ' + hrg;
+                                porsi.innerHTML = jml_porsi;
+                                total_harga.innerHTML = 'Rp. ' + (jml_porsi * hrg);
+                                hapus.innerHTML = '<button type="button" onclick="hapusBaris(this)">Hapus</button>';
+                                total += jml_porsi * hrg;
+                            } else if (nama_makan == 5) {
+                                var tbl = document.getElementById('table_atas');
+                                var row = tbl.insertRow(baris);
+                                var no = row.insertCell(0);
+                                var nama = row.insertCell(1);
+                                var harga = row.insertCell(2);
+                                var porsi = row.insertCell(3);
+                                var total_harga = row.insertCell(4);
+                                var hapus = row.insertCell(5);
+                                if (dt.getDay() < 5) {
+                                    var hrg = 11000;
+                                } else {
+                                    var hrg = 10780;
+                                    document.getElementById('selamat_weekend').style.display = 'block';
+                                }
+                                if (is_pelanggan) {
+                                    hrg -= hrg * 5 / 100;
+                                    document.getElementById('selamat_diskon').style.display = 'block';
+                                }
+                                no.innerHTML = baris;
+                                nama.innerHTML = 'Bakso Beranak';
+                                harga.innerHTML = 'Rp. ' + hrg;
+                                porsi.innerHTML = jml_porsi;
+                                total_harga.innerHTML = 'Rp. ' + (jml_porsi * hrg);
+                                hapus.innerHTML = '<button type="button" onclick="hapusBaris(this)">Hapus</button>';
+                                total += jml_porsi * hrg;
+                            }
+                            document.getElementById('total').innerHTML = 'Rp. ' + total;
+                            baris++;
+                        }
+            
+                        function hapusBaris(row) {
+                            var d = row.parentNode.parentNode.rowIndex;
+                            document.getElementById('table_atas').deleteRow(d);
+                            baris--;
+                        }
+            
+                        function hapus() {
+                            var table = document.getElementById("table_atas");
+                            var rowCount = table.rows.length;
+                            if (rowCount > 1) {
+                                table.deleteRow(rowCount - 1);
+                                baris--;
+                            }
+                            total = 0;
+                            var harga = document.getElementsByTagName("th");
+                            for (var i = 1; i < harga.length; i++) {
+                                harga[i].innerHTML = "-";
+                            }
+                            document.getElementById('total').innerHTML = "-";
+                        }
+                    </script>
+                </center>
+            </body>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+</html>
